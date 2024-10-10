@@ -46,7 +46,8 @@ This is a back-end application designed to manage the assignments between users 
    ```
    The application will run on http://localhost:5000.
 
-### API Endpoints
+
+## API Endpoints
 
 - User Routes
 
@@ -63,3 +64,41 @@ This is a back-end application designed to manage the assignments between users 
   - GET /api/admin/assignments: View assignments
   - POST /api/admin/assignments/:id/accept: Accept an assignment
   - POST /api/admin/assignments/:id/reject: Reject an assignment
+
+
+## Token Authentication
+
+To authenticate requests that require a token, follow these steps:
+
+1. Obtain a Token:
+   - After successfully logging in as a user or admin, you will receive a JWT token in the response. Store this token securely.
+     
+2. Add the Token to Requests:
+   - For any subsequent requests that require authentication, include the token in the Authorization header. The format should be as follows:
+     ```
+     Authorization: Bearer <your_token_here>
+     ```
+
+3. Handling Token Expiration:
+   - If the token is expired or invalid, you will receive a 401 Unauthorized response. You may need to log in again to obtain a new token.
+  
+
+## Accepting or Rejecting Assignments
+
+To accept or reject assignments as an admin, follow these steps:
+
+1. View Assignments:
+   - First, get the list of assignments by sending a GET request to:
+     ```
+     GET /api/admin/assignments
+     ```
+   - The response will include a list of assignments along with their IDs. Ensure you include the token in the Authorization header. 
+
+3. Accept or Reject an Assignment:
+   - To accept or reject a specific assignment, send a POST request to:
+     
+     ```
+     POST /api/admin/assignments/:id/accept
+     ```
+
+     Replace `:id` with the ID of the assignment you want to accept, which you received from the previous step.
