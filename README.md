@@ -40,7 +40,16 @@ This is a back-end application designed to manage the assignments between users 
    npm install
    ```
 
-3. Run the Application
+3. Create `.env` file
+   - In the root directory of the project, create a file named .env and include the following variables:
+     ```
+     PORT=5000
+     ATLAS_CONNECTION_STRING=<your_mongodb_connection_string>
+     JWT_SECRET=<your_jwt_secret>
+     ```
+   - Replace `<your_mongodb_connection_string>` with your actual MongoDB connection string and `<your_jwt_secret>` with a secure secret key for JWT.
+   
+5. Run the Application
    ```
    npm start
    ```
